@@ -22,14 +22,6 @@
       "App\\Test\\": "tests/"
     }
   },
-  "scripts": {
-    "post-install-cmd": [
-      "@php bin/cake.php plugin load Migrations"
-    ],
-    "post-update-cmd": [
-      "@php bin/cake.php plugin load Migrations"
-    ]
-  },
   "config": {
     "allow-plugins": {
       "cakephp/plugin-installer": true
