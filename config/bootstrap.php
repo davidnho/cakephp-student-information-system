@@ -32,6 +32,15 @@ if (file_exists(ROOT . DS . '.env')) {
     $dotenv->safeLoad();
 }
 
+// Provide env() before config/app.php is loaded by CLI and web requests.
+if (!function_exists('env')) {
+    function env(string $key, mixed $default = null): mixed
+    {
+        $value = $_SERVER[$key] ?? $_ENV[$key] ?? getenv($key);
+        return $value === false || $value === null ? $default : $value;
+    }
+}
+
 Configure::config('default', new \Cake\Core\Configure\Engine\PhpConfig());
 Configure::load('app', 'default', false);
 
