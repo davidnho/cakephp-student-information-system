@@ -1,0 +1,32 @@
+:root { --ink: #17243a; --muted: #6d7889; --line: #e8edf3; --blue: #315efb; }
+body { background: #f5f7fb; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app-navbar { background: #14233d; }
+.navbar-brand { letter-spacing: -.04em; font-size: 1.35rem; }
+.brand-dot { color: #66d6c4; }
+.page-title { font-size: clamp(1.8rem, 4vw, 2.35rem); font-weight: 750; letter-spacing: -.045em; }
+.eyebrow { color: #6076aa; font-size: .7rem; font-weight: 800; letter-spacing: .13em; }
+.text-secondary { color: var(--muted) !important; }
+.btn-primary { background: var(--blue); border-color: var(--blue); }
+.btn-primary:hover { background: #244bd7; border-color: #244bd7; }
+.stat-card, .panel { background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 5px 22px rgba(26, 43, 73, .035); }
+.stat-card { padding: 1.25rem 1.4rem; }
+.stat-label, .detail-label { color: #7b8798; font-size: .7rem; font-weight: 750; letter-spacing: .08em; margin-bottom: .4rem; }
+.stat-number { font-size: 2.1rem; font-weight: 750; letter-spacing: -.05em; }
+.panel { padding: clamp(1rem, 3vw, 1.6rem); }
+.section-title { font-size: 1.12rem; font-weight: 750; letter-spacing: -.02em; }
+.search-form { width: min(100%, 390px); }
+.student-table thead th { color: #8792a2; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; border-bottom-color: var(--line); }
+.student-table td { padding-top: 1rem; padding-bottom: 1rem; border-bottom-color: #f0f2f6; }
+.student-number { background: #f1f4ff; color: #3a58bd; padding: .35rem .55rem; border-radius: 7px; font-size: .8rem; font-weight: 650; }
+.year-pill { background: #eaf8f4; color: #16836c; border-radius: 99px; padding: .3rem .6rem; font-size: .75rem; font-weight: 700; white-space: nowrap; }
+.form-panel { max-width: 850px; }
+.form-label { font-size: .85rem; font-weight: 650; color: #344258; }
+.form-control, .form-select { border-color: #dfe5ee; border-radius: 9px; padding: .65rem .8rem; }
+.form-control:focus, .form-select:focus { border-color: #91a8ff; box-shadow: 0 0 0 .2rem rgba(49, 94, 251, .1); }
+.profile-heading { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+.avatar { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; background: #e9efff; color: #315efb; font-weight: 800; font-size: 1.1rem; }
+.detail-label { margin-bottom: .25rem; }
+.alert { border: 0; border-radius: 12px; }
+.pagination { gap: .2rem; }
+.pagination a { border-radius: 7px !important; color: #52627a; }
+footer { border-top: 1px solid var(--line); }

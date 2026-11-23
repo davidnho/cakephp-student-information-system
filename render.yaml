@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: cakephp-student-information-system
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        sync: false
+      - key: SECURITY_SALT
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: RUN_MIGRATIONS
+        value: "true"
