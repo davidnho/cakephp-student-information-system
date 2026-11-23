@@ -5,8 +5,8 @@ ENV PORT=10000
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git unzip libicu-dev \
-    && docker-php-ext-install -j"$(nproc)" intl \
+    git unzip libicu-dev libonig-dev \
+    && docker-php-ext-install -j"$(nproc)" intl mbstring \
     && a2enmod rewrite headers \
     && rm -rf /var/lib/apt/lists/*
 
