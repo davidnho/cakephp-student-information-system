@@ -5,8 +5,8 @@ ENV PORT=10000
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git unzip libicu-dev libpq-dev libzip-dev \
-    && docker-php-ext-install -j"$(nproc)" intl pdo_pgsql zip \
+    git unzip libicu-dev \
+    && docker-php-ext-install -j"$(nproc)" intl \
     && a2enmod rewrite headers \
     && rm -rf /var/lib/apt/lists/*
 
@@ -16,15 +16,13 @@ WORKDIR /var/www/html
 COPY . .
 
 RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader \
-    && mkdir -p tmp/cache/persistent tmp/cache/models tmp/sessions logs \
-    && chown -R www-data:www-data tmp logs \
-    && chmod -R 775 tmp logs
+    && mkdir -p tmp/cache/persistent tmp/cache/models tmp/sessions logs storage \
+    && chown -R www-data:www-data tmp logs storage \
+    && chmod -R 775 tmp logs storage
 
 COPY docker/ports.conf /etc/apache2/ports.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY docker/entrypoint.sh /usr/local/bin/cakephp-entrypoint
-RUN chmod +x /usr/local/bin/cakephp-entrypoint
+RUN chown -R www-data:www-data /var/www/html/storage
 
 EXPOSE 10000
-ENTRYPOINT ["cakephp-entrypoint"]
 CMD ["apache2-foreground"]
