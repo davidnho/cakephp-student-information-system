@@ -7,7 +7,7 @@ use Cake\Http\Exception\NotFoundException;
 
 class StudentsController extends AppController
 {
-    protected \\App\\Model\\Table\\StudentsTable $Students;
+    protected \App\Model\Table\StudentsTable $Students;
 
     public function initialize(): void
     {
