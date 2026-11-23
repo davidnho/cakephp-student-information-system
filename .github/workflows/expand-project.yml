@@ -1,0 +1,28 @@
+name: Expand CakePHP project source
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+      - name: Expand project archive into repository root
+        run: |
+          unzip -q project-source.zip -d /tmp/cakephp-project
+          rsync -a /tmp/cakephp-project/cakephp-student-information-system/ ./
+          rm project-source.zip
+      - name: Commit project files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Add CakePHP Student Information System with Render deployment"
+            git push origin HEAD:master
+          fi
